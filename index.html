@@ -2524,8 +2524,8 @@
     const typingDiv = document.createElement('div');
     typingDiv.className = 'chat-message bot typing-indicator';
     typingDiv.innerHTML = '<div class="message-content">●●●</div>';
-    document.getElementById('chatMessages').appendChild(typingDiv);
-    document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+    document.getElementById('chatBody').appendChild(typingDiv);
+    document.getElementById('chatBody').scrollTop = document.getElementById('chatBody').scrollHeight;
 
     try {
       const response = await fetch('/api/chat', {

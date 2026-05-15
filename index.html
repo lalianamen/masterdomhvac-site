@@ -2507,58 +2507,65 @@
     return 'en';
   }
 
-  const demoResponses = {
-    en: {
-      cooling: "Sounds like an AC issue. Most likely causes are a refrigerant leak, dirty filter, or capacitor failure. I can book a same-day technician visit — free estimate, no charge if you decide not to fix it. What's your zip code?",
-      zip: "Yes — we cover all of Glendale (91201, 91202, 91203, 91204, 91205, 91206, 91207, 91208), plus La Crescenta (91214), La Cañada (91011), and parts of Burbank. What's the issue you're having?",
-      price: "AC installation varies by system size and brand: $4,500-$8,000 for central AC, $3,000-$5,500 for mini-splits. We do free in-home estimates so you get exact pricing for your specific home. Want to book one?",
-      book: "Great! I just need a few quick things: 1) Your name, 2) Phone number, 3) Service address. You can also fill out the form on the Contact page — both work the same.",
-      hello: "Hi there! I can help with AC repair, heating issues, mini-split questions, or booking a free estimate. What's going on?",
-      default: "I can help with: AC repair, AC installation, heating, mini-splits, maintenance plans, or booking a free estimate. What works for you?"
-    },
-    ru: {
-      cooling: "Похоже на проблему с AC. Вероятные причины: утечка фреона, грязный фильтр или неисправный конденсатор. Могу записать техника на сегодня — оценка бесплатная, без обязательств. Какой ваш zip?",
-      zip: "Да — мы покрываем весь Glendale (91201–91208), La Crescenta (91214), La Cañada (91011), часть Burbank. В чём проблема?",
-      price: "Установка AC зависит от размера и бренда: $4,500–$8,000 для центрального, $3,000–$5,500 для мини-сплита. Делаем бесплатную оценку у вас дома — получите точную цену для вашего дома. Записать?",
-      book: "Отлично! Нужно несколько вещей: 1) Имя, 2) Телефон, 3) Адрес. Можете также заполнить форму на странице Связаться.",
-      hello: "Здравствуйте! Могу помочь с ремонтом AC, отоплением, мини-сплитами, или записать на бесплатную оценку. Что у вас?",
-      default: "Могу помочь с: ремонт AC, установка AC, отопление, мини-сплиты, планы обслуживания, или запись на бесплатную оценку. Что подойдёт?"
-    },
-    hy: {
-      cooling: "Կարծես AC-ի խնդիր է։ Հնարավոր պատճառները՝ ֆրեոնի արտահոսք, կեղտոտ ֆիլտր, կամ կոնդենսատորի անսարքություն։ Կարող եմ նույն օրը տեխնիկ գրանցել — գնահատումը անվճար։ Ո՞րն է ձեր zip-ը։",
-      zip: "Այո — ծածկում ենք ամբողջ Գլենդելը (91201–91208), Լա Կրեսենտա (91214), Լա Կանյադա (91011), Բուրբանկի մի մասը։ Ի՞նչ խնդիր է։",
-      price: "AC-ի տեղադրումը կախված է չափից և ապրանքանիշից՝ $4,500–$8,000 կենտրոնականի համար, $3,000–$5,500 mini-split-ի համար։ Անվճար տնային գնահատում ենք անում։ Գրանցե՞նք։",
-      book: "Հիանալի! Մի քանի բան է հարկավոր՝ 1) Անունը, 2) Հեռախոս, 3) Հասցեն։ Կարող եք նաև լրացնել ձևը Կապ էջում։",
-      hello: "Բարև Ձեզ! Կարող եմ օգնել AC-ի վերանորոգման, ջեռուցման, mini-split-ի հարցերում, կամ գրանցել անվճար գնահատման։",
-      default: "Կարող եմ օգնել՝ AC վերանորոգում, AC տեղադրում, ջեռուցում, mini-split-ներ, սպասարկման ծրագրեր, անվճար գնահատում։"
-    }
-  };
+  // Conversation history for Claude API
+  let conversationHistory = [];
 
-  function respondTo(text) {
+  async function respondTo(text) {
+    // Detect language and update UI if needed
     const detectedLang = detectLang(text);
-    const lang = detectedLang;
-    
-    // Update UI language if detected differs
     if (detectedLang !== currentLang) {
       setLang(detectedLang);
     }
-    
-    const t = text.toLowerCase();
-    let response = demoResponses[lang].default;
-    
-    if (/cool|cold|warm|hot|not cooling|не охла|жар|сар|չի սառ|շոգ/i.test(t)) {
-      response = demoResponses[lang].cooling;
-    } else if (/zip|area|cover|район|zip|tarac|ծածկ/i.test(t)) {
-      response = demoResponses[lang].zip;
-    } else if (/price|cost|how much|сколько|стоит|gin|qani/i.test(t)) {
-      response = demoResponses[lang].price;
-    } else if (/book|schedule|estimate|записа|оценк|grans|gnah/i.test(t)) {
-      response = demoResponses[lang].book;
-    } else if (/hi|hello|hey|привет|здрав|барев|բար/i.test(t)) {
-      response = demoResponses[lang].hello;
+
+    // Add user message to history
+    conversationHistory.push({ role: 'user', content: text });
+
+    // Show typing indicator
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'chat-message bot typing-indicator';
+    typingDiv.innerHTML = '<div class="message-content">●●●</div>';
+    document.getElementById('chatMessages').appendChild(typingDiv);
+    document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: conversationHistory })
+      });
+
+      // Remove typing indicator
+      typingDiv.remove();
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const reply = data.reply || 'Sorry, I had trouble responding. Please try again.';
+
+      // Add AI response to history
+      conversationHistory.push({ role: 'assistant', content: reply });
+
+      // Limit history to last 20 messages (10 exchanges)
+      if (conversationHistory.length > 20) {
+        conversationHistory = conversationHistory.slice(-20);
+      }
+
+      addBotMessage(reply);
+    } catch (error) {
+      // Remove typing indicator
+      typingDiv.remove();
+
+      console.error('Chat error:', error);
+      const errorLang = currentLang || 'en';
+      const errorMessages = {
+        en: "Sorry, I'm having trouble connecting right now. Please try again in a moment or call us at (818) 000-0000.",
+        ru: "Извините, у меня проблемы с подключением. Попробуйте ещё раз через минуту или позвоните (818) 000-0000.",
+        hy: "Ներողություն, կապի խնդիր ունեմ։ Փորձեք մի քիչ հետո կամ զանգահարեք (818) 000-0000։"
+      };
+      addBotMessage(errorMessages[errorLang] || errorMessages.en);
     }
-    
-    addBotMessage(response);
   }
 
   function sendMessage() {

@@ -2589,6 +2589,16 @@
       const data = await response.json();
       const reply = data.reply || 'Sorry, I had trouble responding. Please try again.';
 
+      // If AI captured a lead, forward it to /api/lead (same as the form)
+      if (data.lead && data.lead.name && data.lead.phone) {
+        fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data.lead)
+        }).then(r => console.log('Lead forwarded from chat, status:', r.status))
+          .catch(err => console.error('Lead forward failed:', err));
+      }
+
       // Add AI response to history
       conversationHistory.push({ role: 'assistant', content: reply });
 

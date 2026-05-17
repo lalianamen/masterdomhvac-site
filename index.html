@@ -20,7 +20,7 @@
 <meta property="og:locale:alternate" content="ru_RU" />
 <meta property="og:locale:alternate" content="hy_AM" />
 
-<!-- Twitter Card   -->
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="MasterDom HVAC — Glendale's HVAC Experts" />
 <meta name="twitter:description" content="Trilingual HVAC team in Glendale. AC, heating, mini-splits. Same-day service." />
@@ -1853,23 +1853,23 @@
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" data-i18n="lblName">Your name</label>
-            <input type="text" class="form-input" required placeholder="John Doe" />
+            <input type="text" id="formName" class="form-input" required placeholder="John Doe" />
           </div>
           <div class="form-group">
             <label class="form-label" data-i18n="lblPhone">Phone</label>
-            <input type="tel" class="form-input" required placeholder="(818) 555-0000" />
+            <input type="tel" id="formPhone" class="form-input" required placeholder="(818) 555-0000" />
           </div>
         </div>
 
         <div class="form-group">
           <label class="form-label" data-i18n="lblAddress">Service address</label>
-          <input type="text" class="form-input" required placeholder="1234 Brand Blvd, Glendale CA" />
+          <input type="text" id="formAddress" class="form-input" required placeholder="1234 Brand Blvd, Glendale CA" />
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" data-i18n="lblService">Service needed</label>
-            <select class="form-select" required>
+            <select id="formService" class="form-select" required>
               <option value="" data-i18n="optChoose">Choose one...</option>
               <option data-i18n="optAC">AC Repair</option>
               <option data-i18n="optACI">AC Installation</option>
@@ -1882,7 +1882,7 @@
           </div>
           <div class="form-group">
             <label class="form-label" data-i18n="lblLang">Preferred language</label>
-            <select class="form-select">
+            <select id="formLang" class="form-select">
               <option>English</option>
               <option>Русский</option>
               <option>Հայերեն</option>
@@ -1892,10 +1892,10 @@
 
         <div class="form-group">
           <label class="form-label" data-i18n="lblNote">Tell us what's happening</label>
-          <textarea class="form-textarea" placeholder="AC stopped cooling 2 days ago, fan still works..."></textarea>
+          <textarea id="formMessage" class="form-textarea" placeholder="AC stopped cooling 2 days ago, fan still works..."></textarea>
         </div>
 
-        <button type="submit" class="form-submit">
+        <button type="submit" id="formSubmit" class="form-submit">
           <span data-i18n="ctSubmit">Send Request</span> →
         </button>
 
@@ -2427,10 +2427,88 @@
   }
 
   // === FORM ===
-  function submitForm(e) {
+  const LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbznV0sKDwQL7tb65JDNZzhquH14p6gF0m-sasxKVtumm0gV80UcOivmoGz2L3dl_fsCnQ/exec';
+  const TRANSLATE_ENDPOINT = '/api/translate';
+
+  async function submitForm(e) {
     e.preventDefault();
-    document.getElementById('modalOverlay').classList.add('open');
-    document.getElementById('bookingForm').reset();
+
+    const submitBtn = document.getElementById('formSubmit');
+    const originalBtn = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>Sending...</span>';
+
+    // Map UI language to short code
+    const langMap = { 'English': 'en', 'Русский': 'ru', 'Հայերեն': 'hy' };
+
+    // Read raw form values (in customer's language)
+    const rawName = document.getElementById('formName').value.trim();
+    const rawAddress = document.getElementById('formAddress').value.trim();
+    const rawMessage = document.getElementById('formMessage').value.trim();
+    const phone = document.getElementById('formPhone').value.trim();
+    const service = document.getElementById('formService').value.trim();
+    const language = langMap[document.getElementById('formLang').value] || 'en';
+
+    try {
+      // Translate name/address/message to English if not already English
+      let englishName = rawName;
+      let englishAddress = rawAddress;
+      let englishMessage = rawMessage;
+
+      if (language !== 'en') {
+        try {
+          const translateRes = await fetch(TRANSLATE_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: rawName,
+              address: rawAddress,
+              message: rawMessage,
+              language: language
+            })
+          });
+          if (translateRes.ok) {
+            const translated = await translateRes.json();
+            englishName = translated.name || rawName;
+            englishAddress = translated.address || rawAddress;
+            englishMessage = translated.message || rawMessage;
+          }
+        } catch (translateErr) {
+          console.error('Translation failed, sending originals:', translateErr);
+          // Continue with originals if translation fails
+        }
+      }
+
+      // Send lead to Apps Script
+      // Note: 'no-cors' mode because Apps Script doesn't return CORS headers.
+      // Data still gets through; we just can't read the response.
+      await fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'Website Form',
+          name: englishName,
+          phone: phone,
+          email: '',
+          address: englishAddress,
+          service: service,
+          language: language,
+          message: englishMessage,
+          messageOriginal: rawMessage
+        })
+      });
+
+      // Show success modal
+      document.getElementById('modalOverlay').classList.add('open');
+      document.getElementById('bookingForm').reset();
+    } catch (err) {
+      console.error('Form submission failed:', err);
+      alert('Sorry, there was an issue sending your request. Please call us at (818) 000-0000.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtn;
+    }
   }
 
   function closeModal() {

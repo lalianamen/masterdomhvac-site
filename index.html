@@ -2480,12 +2480,12 @@
       }
 
       // Send lead to Apps Script
-      // Note: 'no-cors' mode because Apps Script doesn't return CORS headers.
-      // Data still gets through; we just can't read the response.
+      // IMPORTANT: 'no-cors' mode requires NO 'Content-Type: application/json' header,
+      // otherwise browser blocks the request. Body still arrives as raw text and
+      // Apps Script parses it with JSON.parse(e.postData.contents).
       await fetch(LEAD_ENDPOINT, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           source: 'Website Form',
           name: englishName,

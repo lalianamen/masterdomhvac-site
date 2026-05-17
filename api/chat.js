@@ -185,42 +185,34 @@ module.exports = async function handler(req, res) {
     const data = await response.json();
     let reply = data.content?.[0]?.text || 'Sorry, I had trouble responding. Please try again.';
 
-    // Extract LEAD_CAPTURE block if present and forward to /api/lead
+    // Extract LEAD_CAPTURE block if present
+    // We return lead data to the CLIENT, which forwards to /api/lead.
+    // Server-to-server fetch within the same Vercel deployment fails — see commit history.
+    let leadData = null;
     const leadMatch = reply.match(/<LEAD_CAPTURE>([\s\S]*?)<\/LEAD_CAPTURE>/);
     if (leadMatch) {
       try {
-        const leadData = JSON.parse(leadMatch[1].trim());
-        // Build absolute URL for the lead endpoint (same Vercel deployment)
-        const host = req.headers.host;
-        const protocol = host && host.includes('localhost') ? 'http' : 'https';
-        const leadUrl = `${protocol}://${host}/api/lead`;
-
-        // Fire-and-forget: don't block AI reply on lead delivery
-        fetch(leadUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            source: 'AI Chat',
-            name: leadData.name || '',
-            phone: leadData.phone || '',
-            email: leadData.email || '',
-            address: leadData.address || '',
-            service: leadData.service || '',
-            language: leadData.language || 'en',
-            message: leadData.message || '',
-            messageOriginal: leadData.messageOriginal || leadData.message || ''
-          })
-        }).then(r => {
-          console.log('Lead forwarded, status:', r.status);
-        }).catch(err => console.error('Lead forward failed:', err));
+        const parsed = JSON.parse(leadMatch[1].trim());
+        leadData = {
+          source: 'AI Chat',
+          name: parsed.name || '',
+          phone: parsed.phone || '',
+          email: parsed.email || '',
+          address: parsed.address || '',
+          service: parsed.service || '',
+          language: parsed.language || 'en',
+          message: parsed.message || '',
+          messageOriginal: parsed.messageOriginal || parsed.message || ''
+        };
+        console.log('Lead extracted from chat:', leadData.name, leadData.phone);
       } catch (e) {
-        console.error('Failed to parse LEAD_CAPTURE:', e);
+        console.error('Failed to parse LEAD_CAPTURE:', e.message);
       }
       // Remove the capture block from the reply shown to user
       reply = reply.replace(/<LEAD_CAPTURE>[\s\S]*?<\/LEAD_CAPTURE>/, '').trim();
     }
 
-    return res.status(200).json({ reply });
+    return res.status(200).json({ reply, lead: leadData });
   } catch (error) {
     console.error('Chat handler error:', error);
     return res.status(500).json({ error: 'Internal server error' });

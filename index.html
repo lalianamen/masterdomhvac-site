@@ -2427,8 +2427,8 @@
   }
 
   // === FORM ===
-  const LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbznV0sKDwQL7tb65JDNZzhquH14p6gF0m-sasxKVtumm0gV80UcOivmoGz2L3dl_fsCnQ/exec';
-  const TRANSLATE_ENDPOINT = '/api/translate';
+  // Single endpoint handles translation + Apps Script forwarding server-side
+  const LEAD_ENDPOINT = '/api/lead';
 
   async function submitForm(e) {
     e.preventDefault();
@@ -2441,63 +2441,30 @@
     // Map UI language to short code
     const langMap = { 'English': 'en', 'Русский': 'ru', 'Հայերեն': 'hy' };
 
-    // Read raw form values (in customer's language)
-    const rawName = document.getElementById('formName').value.trim();
-    const rawAddress = document.getElementById('formAddress').value.trim();
+    // Read form values in customer's language; server will translate
     const rawMessage = document.getElementById('formMessage').value.trim();
-    const phone = document.getElementById('formPhone').value.trim();
-    const service = document.getElementById('formService').value.trim();
-    const language = langMap[document.getElementById('formLang').value] || 'en';
+    const leadData = {
+      source: 'Website Form',
+      name: document.getElementById('formName').value.trim(),
+      phone: document.getElementById('formPhone').value.trim(),
+      email: '',
+      address: document.getElementById('formAddress').value.trim(),
+      service: document.getElementById('formService').value.trim(),
+      language: langMap[document.getElementById('formLang').value] || 'en',
+      message: rawMessage,
+      messageOriginal: rawMessage
+    };
 
     try {
-      // Translate name/address/message to English if not already English
-      let englishName = rawName;
-      let englishAddress = rawAddress;
-      let englishMessage = rawMessage;
-
-      if (language !== 'en') {
-        try {
-          const translateRes = await fetch(TRANSLATE_ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: rawName,
-              address: rawAddress,
-              message: rawMessage,
-              language: language
-            })
-          });
-          if (translateRes.ok) {
-            const translated = await translateRes.json();
-            englishName = translated.name || rawName;
-            englishAddress = translated.address || rawAddress;
-            englishMessage = translated.message || rawMessage;
-          }
-        } catch (translateErr) {
-          console.error('Translation failed, sending originals:', translateErr);
-          // Continue with originals if translation fails
-        }
-      }
-
-      // Send lead to Apps Script
-      // IMPORTANT: 'no-cors' mode requires NO 'Content-Type: application/json' header,
-      // otherwise browser blocks the request. Body still arrives as raw text and
-      // Apps Script parses it with JSON.parse(e.postData.contents).
-      await fetch(LEAD_ENDPOINT, {
+      const response = await fetch(LEAD_ENDPOINT, {
         method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify({
-          source: 'Website Form',
-          name: englishName,
-          phone: phone,
-          email: '',
-          address: englishAddress,
-          service: service,
-          language: language,
-          message: englishMessage,
-          messageOriginal: rawMessage
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(leadData)
       });
+
+      if (!response.ok) {
+        throw new Error('Server returned ' + response.status);
+      }
 
       // Show success modal
       document.getElementById('modalOverlay').classList.add('open');

@@ -185,19 +185,20 @@ module.exports = async function handler(req, res) {
     const data = await response.json();
     let reply = data.content?.[0]?.text || 'Sorry, I had trouble responding. Please try again.';
 
-    // Extract LEAD_CAPTURE block if present and send to Apps Script
+    // Extract LEAD_CAPTURE block if present and forward to /api/lead
     const leadMatch = reply.match(/<LEAD_CAPTURE>([\s\S]*?)<\/LEAD_CAPTURE>/);
     if (leadMatch) {
       try {
         const leadData = JSON.parse(leadMatch[1].trim());
-        // Send to Apps Script asynchronously — don't block reply to user
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbznV0sKDwQL7tb65JDNZzhquH14p6gF0m-sasxKVtumm0gV80UcOivmoGz2L3dl_fsCnQ/exec';
-        // Note: Apps Script returns a 302 redirect — fetch must follow it (default in Node).
-        // Sent as text/plain body since Apps Script reads raw e.postData.contents anyway.
-        fetch(APPS_SCRIPT_URL, {
+        // Build absolute URL for the lead endpoint (same Vercel deployment)
+        const host = req.headers.host;
+        const protocol = host && host.includes('localhost') ? 'http' : 'https';
+        const leadUrl = `${protocol}://${host}/api/lead`;
+
+        // Fire-and-forget: don't block AI reply on lead delivery
+        fetch(leadUrl, {
           method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          redirect: 'follow',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             source: 'AI Chat',
             name: leadData.name || '',
@@ -210,8 +211,8 @@ module.exports = async function handler(req, res) {
             messageOriginal: leadData.messageOriginal || leadData.message || ''
           })
         }).then(r => {
-          console.log('Lead sent to Apps Script, status:', r.status);
-        }).catch(err => console.error('Lead capture failed:', err));
+          console.log('Lead forwarded, status:', r.status);
+        }).catch(err => console.error('Lead forward failed:', err));
       } catch (e) {
         console.error('Failed to parse LEAD_CAPTURE:', e);
       }

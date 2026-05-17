@@ -2,7 +2,7 @@
 // More robust: never returns 500 to user if request body is valid.
 // Logs every step so we can debug from Vercel runtime logs.
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbznV0sKDwQL7tb65JDNZzhquH14p6gF0m-sasxKVtumm0gV80UcOivmoGz2L3dl_fsCnQ/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwczTUZ7LJIcH19AInNt94oYYKbr2KlPUItC3nzIDaiNqfFOev_6nDlD-o3LiAfnDla2A/exec';
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');

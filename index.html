@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Professional mini-split deep cleaning in Los Angeles and Glendale. Blower wheel removal, evaporator coil, drain pan and drain line cleaning. Flat pricing from $349. Call or text MasterDom HVAC." />
-<meta name="keywords" content="mini split cleaning Los Angeles, mini split cleaning Glendale CA, ductless AC cleaning Los Angeles, mini split deep cleaning, blower wheel cleaning, mini split mold cleaning, ductless air conditioner cleaning, mini split smells musty, mini split odor removal, evaporator coil cleaning, drain pan cleaning, mini split drain cleaning, Mitsubishi mini split cleaning, Daikin mini split cleaning, Fujitsu mini split cleaning, mini split cleaning Burbank, mini split cleaning Pasadena, mini split maintenance Los Angeles, condenser coil cleaning Los Angeles, MasterDom HVAC" />
 <meta name="author" content="MasterDom HVAC" />
 <meta name="robots" content="index, follow" />
 <meta name="geo.region" content="US-CA" />
@@ -18,7 +17,8 @@
 <meta property="og:url" content="https://masterdomhvac.com/" />
 <meta property="og:title" content="Mini-Split Deep Cleaning in Los Angeles &amp; Glendale | MasterDom HVAC" />
 <meta property="og:description" content="Musty odor or weak airflow? We remove and wash the blower wheel, clean the coil, pan and drain, and show you the before-and-after result." />
-<meta property="og:image" content="https://masterdomhvac.com/og-image.png" />
+<meta property="og:image" content="https://masterdomhvac.com/assets/mini-split-blower-wheel-before-cleaning-los-angeles.webp" />
+<meta property="og:image:alt" content="Dirty mini-split blower wheel before professional deep cleaning" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:locale:alternate" content="ru_RU" />
 <meta property="og:locale:alternate" content="hy_AM" />
@@ -27,6 +27,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Mini-Split Deep Cleaning in Los Angeles &amp; Glendale" />
 <meta name="twitter:description" content="A real deep clean—not a filter rinse. Blower wheel removal, coil, pan and drain cleaning from $349." />
+<meta name="twitter:image" content="https://masterdomhvac.com/assets/mini-split-blower-wheel-before-cleaning-los-angeles.webp" />
 
 <!-- Hreflang for multilingual SEO -->
 <link rel="alternate" hreflang="en" href="https://masterdomhvac.com/" />
@@ -45,7 +46,7 @@
   "@type": "HVACBusiness",
   "name": "MasterDom HVAC",
   "description": "Mini-split deep cleaning in Los Angeles",
-  "image": "https://masterdomhvac.com/og-image.png",
+  "image": "https://masterdomhvac.com/assets/mini-split-blower-wheel-before-cleaning-los-angeles.webp",
   "@id": "https://masterdomhvac.com",
   "url": "https://masterdomhvac.com",
   "telephone": "+1-818-922-9475",
@@ -1505,6 +1506,8 @@
   .form-check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--terracotta); }
   .form-check.disabled { opacity: 0.45; cursor: not-allowed; }
   .form-check small { display: block; font-weight: 500; opacity: 0.7; }
+  .booking-reassurance { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:14px 0 4px; }
+  .booking-reassurance span { display:flex; align-items:center; justify-content:center; text-align:center; min-height:42px; padding:8px 9px; border-radius:12px; background:#eef6f6; color:#294861; font-size:11px; line-height:1.35; font-weight:800; }
 
   .footer-disclosure { font-size: 12px; opacity: 0.55; line-height: 1.5; margin-top: 18px; max-width: 900px; }
 
@@ -1548,6 +1551,17 @@
   .before .wheel::after { background:repeating-conic-gradient(from 2deg,#392f27 0 6deg,#9a846b 6deg 12deg); opacity:.92; }
   .after .wheel { background:#dff6f5; }
   .visual-copy { text-align:center; font-size:13px; line-height:1.45; max-width:175px; color:#456176; }
+  .comparison-slider { position:relative; margin:0 18px; aspect-ratio:4/3; border:1px solid #cfdce3; border-radius:20px; overflow:hidden; background:#e6f4f3; touch-action:pan-y; }
+  .comparison-slider img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .comparison-before { position:absolute; inset:0 auto 0 0; width:var(--split,50%); overflow:hidden; border-right:3px solid #fff; }
+  .comparison-before img { width:var(--comparison-width, 600px); max-width:none; }
+  .comparison-slider-label { position:absolute; top:14px; z-index:4; padding:7px 10px; border-radius:999px; color:#fff; background:rgba(16,42,67,.82); font-size:11px; font-weight:900; letter-spacing:.1em; }
+  .comparison-slider-label.before-label { left:14px; }
+  .comparison-slider-label.after-label { right:14px; }
+  .comparison-handle { position:absolute; top:0; bottom:0; left:var(--split,50%); width:42px; transform:translateX(-50%); z-index:5; display:grid; place-items:center; pointer-events:none; }
+  .comparison-handle::after { content:'↔'; display:grid; place-items:center; width:38px; height:38px; border-radius:50%; background:#fff; color:#102A43; box-shadow:0 4px 16px rgba(16,42,67,.25); font-weight:900; }
+  .comparison-range { position:absolute; inset:0; z-index:6; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize; }
+  .comparison-help { display:flex; justify-content:center; align-items:center; gap:8px; margin:12px 18px 0; color:#456176; font-size:12px; font-weight:700; }
   .visual-caption { padding:18px 24px 78px; font-size:14px; line-height:1.5; color:#456176; }
   .hero-visual .hero-badge { left:18px; right:18px; bottom:18px; }
   .trust-strip { max-width:1336px; margin:10px auto 20px; padding:0 32px; display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
@@ -1578,8 +1592,10 @@
     .hero-stats { display:grid; grid-template-columns:1fr 1fr; }
     .hero-visual { min-height:440px; border-radius:22px; }
     .visual-grid { margin:0 12px; } .visual-panel { min-height:270px; padding:16px 8px; }
+    .comparison-slider { margin:0 12px; }
     .wheel { width:112px; height:112px; } .visual-copy { font-size:11px; }
     .trust-strip, .compare-grid { grid-template-columns:1fr; }
+    .booking-reassurance { grid-template-columns:1fr; }
     .mobile-action-bar { position:fixed; display:grid; grid-template-columns:1fr 1fr; gap:8px; bottom:0; left:0; right:0; padding:10px 12px; background:rgba(255,255,255,.96); border-top:1px solid #ccd9df; z-index:9998; }
     .mobile-action-bar a { display:flex; justify-content:center; align-items:center; border-radius:999px; padding:12px 8px; font-weight:800; font-size:13px; }
     .mobile-call { background:#102A43; color:#fff; } .mobile-text { background:#E46A35; color:#fff; }
@@ -1683,18 +1699,17 @@
 
     <div class="hero-visual" aria-label="Illustration of a dirty blower wheel before and clean blower wheel after service">
       <div class="visual-head" data-i18n="visualHead">What a deep clean changes</div>
-      <div class="visual-grid">
-        <div class="visual-panel before">
-          <div class="visual-label" data-i18n="beforeLabel">BEFORE</div>
-          <img class="visual-photo" src="assets/mini-split-blower-wheel-before-cleaning-los-angeles.webp" width="900" height="684" alt="Dirty mini-split blower wheel before deep cleaning in Los Angeles" fetchpriority="high" decoding="async" />
-          <div class="visual-copy" data-i18n="beforeCopy">Dust and buildup stay hidden inside the blower wheel.</div>
+      <div class="comparison-slider" id="comparisonSlider" style="--split:50%">
+        <img src="assets/mini-split-blower-wheel-after-cleaning-los-angeles.webp" width="900" height="684" alt="Clean mini-split blower wheel after professional deep cleaning in Los Angeles" fetchpriority="high" decoding="async" />
+        <div class="comparison-before">
+          <img src="assets/mini-split-blower-wheel-before-cleaning-los-angeles.webp" width="900" height="684" alt="Dirty mini-split blower wheel before deep cleaning in Los Angeles" fetchpriority="high" decoding="async" />
         </div>
-        <div class="visual-panel after">
-          <div class="visual-label" data-i18n="afterLabel">AFTER</div>
-          <img class="visual-photo" src="assets/mini-split-blower-wheel-after-cleaning-los-angeles.webp" width="900" height="684" alt="Clean mini-split blower wheel after professional deep cleaning in Los Angeles" fetchpriority="high" decoding="async" />
-          <div class="visual-copy" data-i18n="afterCopy">Wheel removed, washed and reinstalled—airflow restored.</div>
-        </div>
+        <span class="comparison-slider-label before-label" data-i18n="beforeLabel">BEFORE</span>
+        <span class="comparison-slider-label after-label" data-i18n="afterLabel">AFTER</span>
+        <span class="comparison-handle" aria-hidden="true"></span>
+        <input class="comparison-range" id="comparisonRange" type="range" min="5" max="95" value="50" aria-label="Drag to compare the blower wheel before and after cleaning" />
       </div>
+      <div class="comparison-help" data-i18n="compareHelp">↔ Drag to reveal the result</div>
       <div class="visual-caption" data-i18n="visualCaption">Every visit includes before-and-after photos of your actual unit.</div>
       <div class="hero-badge">
         <div class="hero-badge-icon">📍</div>
@@ -1717,18 +1732,18 @@
   <section id="signs">
     <div class="section-eyebrow" data-i18n="signsEyebrow">— Does your unit need it?</div>
     <h2 class="section-title" data-i18n="signsTitle">A filter rinse is <em>not</em> a cleaning.</h2>
-    <p class="section-desc" data-i18n="signsDesc">Mold and dust build up inside the blower wheel and coil — places you can't reach by washing the filters. If you notice any of these, it's time.</p>
+    <p class="section-desc" data-i18n="signsDesc">Dust and moisture-related buildup collect inside the blower wheel and coil—places you cannot reach by washing the filters. These signs mean the unit should be inspected and cleaned.</p>
 
     <div class="services-grid">
       <div class="service-card static">
         <div class="service-icon">🦠</div>
         <h3 data-i18n="sign1T">Musty smell</h3>
-        <p data-i18n="sign1D">A sour or "wet sock" smell when the unit turns on — usually mold growing on the blower wheel.</p>
+        <p data-i18n="sign1D">A sour or “wet sock” odor can come from moisture and buildup on the wheel, coil or drain pan.</p>
       </div>
       <div class="service-card static">
         <div class="service-icon">⚫</div>
         <h3 data-i18n="sign2T">Black spots</h3>
-        <p data-i18n="sign2D">Dark specks on the louvers or the wheel you can see through the vent. That's mold and dirt, blown straight into your room.</p>
+        <p data-i18n="sign2D">Dark specks on the louvers or visible wheel indicate buildup inside the air path that a filter rinse cannot reach.</p>
       </div>
       <div class="service-card static">
         <div class="service-icon">🌬️</div>
@@ -1738,7 +1753,7 @@
       <div class="service-card static">
         <div class="service-icon">💧</div>
         <h3 data-i18n="sign4T">Water dripping</h3>
-        <p data-i18n="sign4D">Slime in the drain pan and line causes leaks down the wall. Cleaning the pan and flushing the drain fixes most of them.</p>
+        <p data-i18n="sign4D">Buildup in the drain pan or line can contribute to leaks. We clean and test the accessible drainage path.</p>
       </div>
       <div class="service-card static">
         <div class="service-icon">🤧</div>
@@ -1793,7 +1808,7 @@
           <div class="why-num">02</div>
           <div class="why-item-text">
             <strong data-i18n="inc2T">Blower wheel removed</strong>
-            <span data-i18n="inc2D">We take the unit apart and pull out the blower wheel (the blades) — the part where most mold hides.</span>
+            <span data-i18n="inc2D">We take the unit apart and remove the blower wheel—the component where heavy hidden buildup often collects.</span>
           </div>
         </div>
         <div class="why-item">
@@ -1806,8 +1821,8 @@
         <div class="why-item">
           <div class="why-num">04</div>
           <div class="why-item-text">
-            <strong data-i18n="inc4T">Anti-mold treatment</strong>
-            <span data-i18n="inc4D">Antimicrobial treatment of the coil, wheel, and pan to stop mold from coming back.</span>
+            <strong data-i18n="inc4T">Coil-safe cleaning</strong>
+            <span data-i18n="inc4D">We use professional cleaning products selected for indoor HVAC components and rinse accessible residues as required.</span>
           </div>
         </div>
         <div class="why-item">
@@ -1835,7 +1850,7 @@
         <ul class="price-list">
           <li data-i18n="pIncWheel">Blower wheel removed &amp; washed</li>
           <li data-i18n="pIncCoil">Coil, pan &amp; drain cleaned</li>
-          <li data-i18n="pIncMold">Anti-mold treatment</li>
+          <li data-i18n="pIncMold">Professional coil-safe cleaning</li>
         </ul>
         <button class="btn-primary" onclick="pickPlan('1')"><span data-i18n="priceBtn">Book</span> →</button>
       </div>
@@ -1848,7 +1863,7 @@
         <ul class="price-list">
           <li data-i18n="pIncWheel">Blower wheel removed &amp; washed</li>
           <li data-i18n="pIncCoil">Coil, pan &amp; drain cleaned</li>
-          <li data-i18n="pIncMold">Anti-mold treatment</li>
+          <li data-i18n="pIncMold">Professional coil-safe cleaning</li>
         </ul>
         <button class="btn-primary" onclick="pickPlan('2')"><span data-i18n="priceBtn">Book</span> →</button>
       </div>
@@ -1860,7 +1875,7 @@
         <ul class="price-list">
           <li data-i18n="pIncWheel">Blower wheel removed &amp; washed</li>
           <li data-i18n="pIncCoil">Coil, pan &amp; drain cleaned</li>
-          <li data-i18n="pIncMold">Anti-mold treatment</li>
+          <li data-i18n="pIncMold">Professional coil-safe cleaning</li>
         </ul>
         <button class="btn-primary" onclick="pickPlan('3')"><span data-i18n="priceBtn">Book</span> →</button>
       </div>
@@ -2004,6 +2019,12 @@
         <button type="submit" id="formSubmit" class="form-submit">
           <span data-i18n="ctSubmit">Request a Cleaning</span> →
         </button>
+
+        <div class="booking-reassurance" aria-label="Booking information">
+          <span data-i18n="bookTrust1">✓ No payment required</span>
+          <span data-i18n="bookTrust2">✓ Flat price confirmed first</span>
+          <span data-i18n="bookTrust3">✓ We call to confirm the time</span>
+        </div>
 
         <p class="form-note" data-i18n="ctNote">By submitting you agree to be contacted by MasterDom HVAC. We never share your info.</p>
       </form>
@@ -2160,7 +2181,7 @@
       heroSub: "A real deep clean—not a filter rinse. We remove and wash the blower wheel, clean the coil, pan and drain, then show you before-and-after results.",
       ctaBook: "Book a Cleaning", ctaText: "Text a Photo",
       proof1: "Blower wheel removed", proof2: "No hidden fees", proof3: "Clean-work protection",
-      visualHead: "What a deep clean changes", beforeLabel: "BEFORE", afterLabel: "AFTER", beforeCopy: "Dust and buildup stay hidden inside the blower wheel.", afterCopy: "Wheel removed, washed and reinstalled—airflow restored.", visualCaption: "Every visit includes before-and-after photos of your actual unit.",
+      visualHead: "What a deep clean changes", beforeLabel: "BEFORE", afterLabel: "AFTER", compareHelp: "↔ Drag to reveal the result", beforeCopy: "Dust and buildup stay hidden inside the blower wheel.", afterCopy: "Wheel removed, washed and reinstalled—airflow restored.", visualCaption: "Every visit includes before-and-after photos of your actual unit.",
       trust1T: "8+ years in HVAC", trust1D: "Hands-on field experience", trust2T: "Flat pricing", trust2D: "No trip fee or surprise upsells", trust3T: "Clean-work standard", trust3D: "Floors and walls protected", trust4T: "3 languages", trust4D: "English · Русский · Հայերեն",
       compareEyebrow: "— Know what you are paying for", compareTitle: "A quick rinse and a <em>deep clean</em> are not the same.", quickTitle: "Basic surface cleaning", quick1: "Filters rinsed", quick2: "Visible surfaces sprayed", quick3: "Blower wheel stays inside", quick4: "Hidden buildup may remain", deepTitle: "MasterDom deep cleaning", deep1: "Blower wheel removed and washed", deep2: "Coil, pan and drain cleaned", deep3: "Unit reassembled and tested", deep4: "Before-and-after photos included",
       statPrice: "Per indoor unit", statLangs: "Languages", statTime: "Per unit", statYears: "Years in HVAC",
@@ -2168,11 +2189,11 @@
 
       signsEyebrow: "— Does your unit need it?",
       signsTitle: "A filter rinse is <em>not</em> a cleaning.",
-      signsDesc: "Mold and dust build up inside the blower wheel and coil — places you can't reach by washing the filters. If you notice any of these, it's time.",
-      sign1T: "Musty smell", sign1D: "A sour or \"wet sock\" smell when the unit turns on — usually mold growing on the blower wheel.",
-      sign2T: "Black spots", sign2D: "Dark specks on the louvers or the wheel you can see through the vent. That's mold and dirt, blown straight into your room.",
+      signsDesc: "Dust and moisture-related buildup collect inside the blower wheel and coil—places you cannot reach by washing the filters. These signs mean the unit should be inspected and cleaned.",
+      sign1T: "Musty smell", sign1D: "A sour or \"wet sock\" odor can come from moisture and buildup on the wheel, coil or drain pan.",
+      sign2T: "Black spots", sign2D: "Dark specks on the louvers or visible wheel indicate buildup inside the air path that a filter rinse cannot reach.",
       sign3T: "Weak airflow", sign3D: "A clogged wheel and coil move less air, so the room cools slower and your electric bill goes up.",
-      sign4T: "Water dripping", sign4D: "Slime in the drain pan and line causes leaks down the wall. Cleaning the pan and flushing the drain fixes most of them.",
+      sign4T: "Water dripping", sign4D: "Buildup in the drain pan or line can contribute to leaks. We clean and test the accessible drainage path.",
       sign5T: "Allergies indoors", sign5D: "Sneezing, coughing, or a stuffy nose that gets worse when the AC is running.",
       sign6T: "Over a year", sign6D: "Mini-splits should be deep-cleaned once a year — every 6 months with pets, smokers, or heavy use.",
 
@@ -2180,9 +2201,9 @@
       incTitle: "A <em>full</em> deep clean, not a quick spray.",
       incDesc: "Every indoor unit gets the same complete service. One flat price — no upsells, no surprises.",
       inc1T: "Protect your home", inc1D: "Drop cloths, shoe covers, and a cleaning bag under the unit. No mess on your walls or floor.",
-      inc2T: "Blower wheel removed", inc2D: "We take the unit apart and pull out the blower wheel (the blades) — the part where most mold hides.",
+      inc2T: "Blower wheel removed", inc2D: "We take the unit apart and remove the blower wheel—the component where heavy hidden buildup often collects.",
       inc3T: "Coil, pan &amp; drain washed", inc3D: "Coil and blower wheel washed with coil cleaner, drain pan scrubbed, drain line flushed.",
-      inc4T: "Anti-mold treatment", inc4D: "Antimicrobial treatment of the coil, wheel, and pan to stop mold from coming back.",
+      inc4T: "Coil-safe cleaning", inc4D: "We use professional cleaning products selected for indoor HVAC components and rinse accessible residues as required.",
       inc5T: "Reassemble &amp; test", inc5D: "Filters and covers cleaned, everything put back, airflow and drainage checked. Before &amp; after photos.",
 
       priceEyebrow: "— Pricing",
@@ -2193,7 +2214,7 @@
       p3Label: "3 indoor units", p3Per: "Save $98 on the visit",
       p4Label: "Outdoor condenser wash", p4Per: "Add-on or on its own",
       pPopular: "Most popular",
-      pIncWheel: "Blower wheel removed &amp; washed", pIncCoil: "Coil, pan &amp; drain cleaned", pIncMold: "Anti-mold treatment",
+      pIncWheel: "Blower wheel removed &amp; washed", pIncCoil: "Coil, pan &amp; drain cleaned", pIncMold: "Professional coil-safe cleaning",
       pIncCond1: "Condenser coil washed", pIncCond2: "Leaves &amp; debris removed", pIncCond3: "Better efficiency in the heat",
       priceBtn: "Book",
       priceFoot: "4 or more indoor units? Call <a href=\"tel:+18189229475\">(818) 922-9475</a> and we'll give you a quote.",
@@ -2223,6 +2244,7 @@
       lblAddCond: "Add outdoor condenser wash (+$149)",
       condNote: "Available with 1 or 2 indoor units. With 3 units, book the condenser wash as a separate visit.",
       ctSubmit: "Request a Cleaning",
+      bookTrust1: "✓ No payment required", bookTrust2: "✓ Flat price confirmed first", bookTrust3: "✓ We call to confirm the time",
       ctNote: "By submitting you agree to be contacted by MasterDom HVAC. We never share your info.",
       fastTitle: "Not ready to book?", fastDesc: "Text us a photo of the indoor unit and tell us what you notice. We’ll help you choose the right service.", fastBtn: "Text a Photo", mobileCall: "Call now", mobileText: "Text a photo",
       infoPhoneL: "CALL OR TEXT", infoPhoneS: "English · Русский · Հայերեն",
@@ -2255,7 +2277,7 @@
       heroSub: "Настоящая глубокая чистка, а не промывка фильтров. Снимаем и моем крыльчатку, очищаем радиатор, поддон и дренаж, затем показываем результат до и после.",
       ctaBook: "Записаться на чистку", ctaText: "Отправить фото",
       proof1: "Снимаем крыльчатку", proof2: "Без скрытых доплат", proof3: "Защищаем стены и пол",
-      visualHead: "Что меняет глубокая чистка", beforeLabel: "ДО", afterLabel: "ПОСЛЕ", beforeCopy: "Пыль и налёт прячутся внутри крыльчатки.", afterCopy: "Крыльчатка снята, вымыта и установлена обратно.", visualCaption: "После каждого визита вы получаете фото именно вашего блока до и после.",
+      visualHead: "Что меняет глубокая чистка", beforeLabel: "ДО", afterLabel: "ПОСЛЕ", compareHelp: "↔ Потяните, чтобы увидеть результат", beforeCopy: "Пыль и налёт прячутся внутри крыльчатки.", afterCopy: "Крыльчатка снята, вымыта и установлена обратно.", visualCaption: "После каждого визита вы получаете фото именно вашего блока до и после.",
       trust1T: "8+ лет в HVAC", trust1D: "Практический опыт на объектах", trust2T: "Фиксированная цена", trust2D: "Без платы за выезд и доплат", trust3T: "Чистая работа", trust3D: "Защищаем стены и пол", trust4T: "3 языка", trust4D: "English · Русский · Հայերեն",
       compareEyebrow: "— Знайте, за что платите", compareTitle: "Быстрая промывка и <em>глубокая чистка</em> — не одно и то же.", quickTitle: "Поверхностная чистка", quick1: "Промывка фильтров", quick2: "Спрей по видимым поверхностям", quick3: "Крыльчатка остаётся внутри", quick4: "Скрытая грязь может остаться", deepTitle: "Глубокая чистка MasterDom", deep1: "Снимаем и моем крыльчатку", deep2: "Чистим радиатор, поддон и дренаж", deep3: "Собираем и проверяем блок", deep4: "Фото до и после включены",
       statPrice: "За внутренний блок", statLangs: "Языка", statTime: "На блок", statYears: "Лет в HVAC",
@@ -2263,11 +2285,11 @@
 
       signsEyebrow: "— Нужна ли чистка?",
       signsTitle: "Помыть фильтры — это <em>ещё не</em> чистка.",
-      signsDesc: "Плесень и пыль копятся внутри крыльчатки и радиатора — туда не добраться, просто промыв фильтры. Заметили что-то из этого — пора чистить.",
-      sign1T: "Запах сырости", sign1D: "Кислый или затхлый запах при включении — обычно это плесень на крыльчатке.",
-      sign2T: "Чёрные точки", sign2D: "Тёмные пятна на жалюзи или крыльчатке, видные через решётку. Это плесень и грязь, которые летят прямо в комнату.",
+      signsDesc: "Пыль и связанный с влагой налёт скапливаются внутри крыльчатки и радиатора — туда не добраться простой промывкой фильтров. Эти признаки означают, что блок пора осмотреть и почистить.",
+      sign1T: "Запах сырости", sign1D: "Кислый или затхлый запах может появляться из-за влаги и налёта на крыльчатке, радиаторе или поддоне.",
+      sign2T: "Чёрные точки", sign2D: "Тёмные точки на жалюзи или видимой части крыльчатки указывают на загрязнение внутри воздушного канала.",
       sign3T: "Слабый поток", sign3D: "Забитые крыльчатка и радиатор гонят меньше воздуха — комната охлаждается дольше, счёт за свет растёт.",
-      sign4T: "Течёт вода", sign4D: "Слизь в поддоне и дренаже — причина протечек по стене. Чистка поддона и промывка дренажа решают большинство случаев.",
+      sign4T: "Течёт вода", sign4D: "Загрязнение поддона или дренажа может вызывать протечку. Мы очищаем и проверяем доступную часть дренажной системы.",
       sign5T: "Аллергия дома", sign5D: "Чихание, кашель или заложенный нос, которые усиливаются, когда работает кондиционер.",
       sign6T: "Больше года", sign6D: "Мини-сплит нужно глубоко чистить раз в год, а при животных, курении или частой работе — раз в полгода.",
 
@@ -2275,9 +2297,9 @@
       incTitle: "<em>Полная</em> чистка, а не просто спрей.",
       incDesc: "Каждый внутренний блок получает одинаково полное обслуживание. Одна фиксированная цена — без навязывания и сюрпризов.",
       inc1T: "Защищаем ваш дом", inc1D: "Плёнка на пол, бахилы и специальный мешок под блоком. Стены и пол остаются чистыми.",
-      inc2T: "Снимаем крыльчатку", inc2D: "Разбираем блок и вынимаем крыльчатку (барабан с лопастями) — именно там прячется больше всего плесени.",
+      inc2T: "Снимаем крыльчатку", inc2D: "Разбираем блок и вынимаем крыльчатку — именно на ней часто скапливается большое количество скрытой грязи.",
       inc3T: "Моем радиатор, поддон и дренаж", inc3D: "Радиатор и крыльчатка моются специальным средством, поддон очищается, дренаж промывается.",
-      inc4T: "Обработка от плесени", inc4D: "Антибактериальная обработка радиатора, крыльчатки и поддона, чтобы плесень не вернулась.",
+      inc4T: "Безопасная для радиатора чистка", inc4D: "Используем профессиональные средства для внутренних компонентов HVAC и смываем остатки там, где это требуется.",
       inc5T: "Сборка и проверка", inc5D: "Чистим фильтры и крышки, собираем, проверяем поток воздуха и дренаж. Фото до и после.",
 
       priceEyebrow: "— Цены",
@@ -2288,7 +2310,7 @@
       p3Label: "3 внутренних блока", p3Per: "≈ $317 за блок",
       p4Label: "Мойка наружного блока", p4Per: "Дополнительно или отдельно",
       pPopular: "Чаще всего берут",
-      pIncWheel: "Снятие и мойка крыльчатки", pIncCoil: "Чистка радиатора, поддона и дренажа", pIncMold: "Обработка от плесени",
+      pIncWheel: "Снятие и мойка крыльчатки", pIncCoil: "Чистка радиатора, поддона и дренажа", pIncMold: "Профессиональная безопасная химия",
       pIncCond1: "Мойка радиатора конденсора", pIncCond2: "Удаление листьев и мусора", pIncCond3: "Лучше работает в жару",
       priceBtn: "Записаться",
       priceFoot: "4 и больше внутренних блоков? Звоните <a href=\"tel:+18189229475\">(818) 922-9475</a> — посчитаем цену.",
@@ -2318,6 +2340,7 @@
       lblAddCond: "Добавить мойку наружного блока (+$149)",
       condNote: "Доступно с 1 или 2 внутренними блоками. С 3 блоками мойку наружного блока записываем отдельным визитом.",
       ctSubmit: "Отправить заявку",
+      bookTrust1: "✓ Без предоплаты", bookTrust2: "✓ Сначала подтверждаем цену", bookTrust3: "✓ Звоним для подтверждения времени",
       ctNote: "Отправляя форму, вы соглашаетесь на связь с MasterDom HVAC. Мы не передаём ваши данные третьим лицам.",
       fastTitle: "Пока не готовы записаться?", fastDesc: "Отправьте фото внутреннего блока и опишите проблему. Мы поможем выбрать подходящую услугу.", fastBtn: "Отправить фото", mobileCall: "Позвонить", mobileText: "Отправить фото",
       infoPhoneL: "ЗВОНОК ИЛИ СМС", infoPhoneS: "English · Русский · Հայերեն",
@@ -2350,7 +2373,7 @@
       heroSub: "Իրական խորը մաքրում, ոչ միայն ֆիլտրերի լվացում։ Հանում և լվանում ենք անիվը, մաքրում ռադիատորը, սկուտեղն ու դրենաժը և ցույց տալիս առաջ ու հետո արդյունքը։",
       ctaBook: "Գրանցվել մաքրման", ctaText: "Ուղարկել լուսանկար",
       proof1: "Անիվը հանվում է", proof2: "Առանց թաքնված վճարների", proof3: "Պաշտպանում ենք տունը",
-      visualHead: "Ինչ է փոխում խորը մաքրումը", beforeLabel: "ԱՌԱՋ", afterLabel: "ՀԵՏՈ", beforeCopy: "Փոշին և կեղտը թաքնվում են օդափոխիչի անիվի ներսում։", afterCopy: "Անիվը հանված, լվացված և նորից տեղադրված է։", visualCaption: "Յուրաքանչյուր այցից հետո ստանում եք ձեր բլոկի առաջ և հետո լուսանկարները։",
+      visualHead: "Ինչ է փոխում խորը մաքրումը", beforeLabel: "ԱՌԱՋ", afterLabel: "ՀԵՏՈ", compareHelp: "↔ Քաշեք՝ արդյունքը տեսնելու համար", beforeCopy: "Փոշին և կեղտը թաքնվում են օդափոխիչի անիվի ներսում։", afterCopy: "Անիվը հանված, լվացված և նորից տեղադրված է։", visualCaption: "Յուրաքանչյուր այցից հետո ստանում եք ձեր բլոկի առաջ և հետո լուսանկարները։",
       trust1T: "8+ տարի HVAC-ում", trust1D: "Գործնական դաշտային փորձ", trust2T: "Ֆիքսված գին", trust2D: "Առանց այցի և անակնկալ վճարների", trust3T: "Մաքուր աշխատանք", trust3D: "Պաշտպանում ենք պատերն ու հատակը", trust4T: "3 լեզու", trust4D: "English · Русский · Հայերեն",
       compareEyebrow: "— Իմացեք՝ ինչի համար եք վճարում", compareTitle: "Արագ լվացումը և <em>խորը մաքրումը</em> նույնը չեն։", quickTitle: "Մակերեսային մաքրում", quick1: "Ֆիլտրերի լվացում", quick2: "Տեսանելի մասերի սփրեյ", quick3: "Անիվը մնում է ներսում", quick4: "Թաքնված կեղտը կարող է մնալ", deepTitle: "MasterDom-ի խորը մաքրում", deep1: "Անիվը հանվում և լվացվում է", deep2: "Մաքրվում են ռադիատորը, սկուտեղն ու դրենաժը", deep3: "Բլոկը հավաքվում և ստուգվում է", deep4: "Առաջ և հետո լուսանկարները ներառված են",
       statPrice: "Մեկ ներքին բլոկի համար", statLangs: "Լեզու", statTime: "Մեկ բլոկի համար", statYears: "Տարի HVAC-ում",
@@ -2358,11 +2381,11 @@
 
       signsEyebrow: "— Պե՞տք է արդյոք մաքրում",
       signsTitle: "Ֆիլտրերը լվանալը <em>դեռ</em> մաքրում չէ։",
-      signsDesc: "Բորբոսն ու փոշին կուտակվում են անիվի և ռադիատորի ներսում, որտեղ ֆիլտրերը լվանալով չեք հասնի։ Եթե նկատում եք սրանցից որևէ մեկը, ժամանակն է։",
-      sign1T: "Խոնավության հոտ", sign1D: "Թթու կամ բորբոսնած հոտ միացնելիս — սովորաբար անիվի վրա աճող բորբոս է։",
-      sign2T: "Սև կետեր", sign2D: "Մուգ բծեր շերտավարագույրների կամ անիվի վրա։ Դա բորբոս և կեղտ է, որն ուղիղ փչվում է սենյակ։",
+      signsDesc: "Փոշին և խոնավությունից առաջացած նստվածքը կուտակվում են անիվի ու ռադիատորի ներսում, որտեղ ֆիլտրերի լվացմամբ հնարավոր չէ հասնել։ Այս նշանները ցույց են տալիս, որ բլոկը պետք է ստուգել և մաքրել։",
+      sign1T: "Խոնավության հոտ", sign1D: "Թթու կամ խոնավ հոտը կարող է առաջանալ անիվի, ռադիատորի կամ սկուտեղի վրա կուտակված խոնավությունից ու նստվածքից։",
+      sign2T: "Սև կետեր", sign2D: "Մուգ կետերը շերտավարագույրների կամ տեսանելի անիվի վրա ցույց են տալիս օդի ճանապարհի ներսում կուտակում։",
       sign3T: "Թույլ օդահոսք", sign3D: "Խցանված անիվն ու ռադիատորը քիչ օդ են մղում․ սենյակը դանդաղ է սառչում, հոսանքի հաշիվը՝ աճում։",
-      sign4T: "Ջուր է կաթում", sign4D: "Սկուտեղի և դրենաժի լորձը պատի վրա արտահոսքի պատճառ է։ Մաքրումը լուծում է դեպքերի մեծ մասը։",
+      sign4T: "Ջուր է կաթում", sign4D: "Սկուտեղի կամ դրենաժի կուտակումը կարող է արտահոսք առաջացնել։ Մենք մաքրում և ստուգում ենք դրենաժի հասանելի հատվածը։",
       sign5T: "Ալերգիա տանը", sign5D: "Փռշտոց, հազ կամ քթի փակվածություն, որոնք ուժեղանում են, երբ AC-ն աշխատում է։",
       sign6T: "Մեկ տարուց ավել", sign6D: "Mini-split-ը պետք է խորը մաքրել տարին մեկ անգամ, իսկ կենդանիների կամ հաճախակի օգտագործման դեպքում՝ 6 ամիսը մեկ։",
 
@@ -2370,9 +2393,9 @@
       incTitle: "<em>Ամբողջական</em> մաքրում, ոչ թե պարզապես սփրեյ։",
       incDesc: "Յուրաքանչյուր ներքին բլոկ ստանում է նույն ամբողջական սպասարկումը։ Մեկ ֆիքսված գին՝ առանց անակնկալների։",
       inc1T: "Պաշտպանում ենք ձեր տունը", inc1D: "Հատակի ծածկոց, կոշկածածկեր և հատուկ պարկ բլոկի տակ։ Պատերն ու հատակը մնում են մաքուր։",
-      inc2T: "Հանում ենք անիվը", inc2D: "Բացում ենք բլոկը և հանում օդափոխիչի անիվը (շեղբերը)՝ այն մասը, որտեղ թաքնված է բորբոսի մեծ մասը։",
+      inc2T: "Հանում ենք անիվը", inc2D: "Բացում ենք բլոկը և հանում օդափոխիչի անիվը՝ այն մասը, որտեղ հաճախ կուտակվում է թաքնված կեղտը։",
       inc3T: "Լվանում ենք ռադիատորը, սկուտեղը և դրենաժը", inc3D: "Ռադիատորն ու անիվը լվացվում են հատուկ միջոցով, սկուտեղը մաքրվում է, դրենաժը՝ լվացվում։",
-      inc4T: "Հակաբորբոսային մշակում", inc4D: "Ռադիատորի, անիվի և սկուտեղի հակամանրէային մշակում, որպեսզի բորբոսը չվերադառնա։",
+      inc4T: "Ռադիատորի համար անվտանգ մաքրում", inc4D: "Օգտագործում ենք ներքին HVAC բաղադրիչների համար նախատեսված պրոֆեսիոնալ միջոցներ և անհրաժեշտության դեպքում լվանում մնացորդները։",
       inc5T: "Հավաքում և ստուգում", inc5D: "Մաքրում ենք ֆիլտրերն ու կափարիչները, հավաքում, ստուգում օդահոսքը և դրենաժը։ Լուսանկարներ՝ առաջ և հետո։",
 
       priceEyebrow: "— Գներ",
@@ -2383,7 +2406,7 @@
       p3Label: "3 ներքին բլոկ", p3Per: "≈ $317 մեկ բլոկի համար",
       p4Label: "Արտաքին բլոկի լվացում", p4Per: "Լրացուցիչ կամ առանձին",
       pPopular: "Ամենապահանջված",
-      pIncWheel: "Անիվի հանում և լվացում", pIncCoil: "Ռադիատորի, սկուտեղի և դրենաժի մաքրում", pIncMold: "Հակաբորբոսային մշակում",
+      pIncWheel: "Անիվի հանում և լվացում", pIncCoil: "Ռադիատորի, սկուտեղի և դրենաժի մաքրում", pIncMold: "Պրոֆեսիոնալ անվտանգ մաքրում",
       pIncCond1: "Կոնդենսատորի ռադիատորի լվացում", pIncCond2: "Տերևների և աղբի հեռացում", pIncCond3: "Ավելի լավ աշխատանք շոգին",
       priceBtn: "Գրանցվել",
       priceFoot: "4 և ավելի ներքին բլոկ ունե՞ք։ Զանգահարեք <a href=\"tel:+18189229475\">(818) 922-9475</a>՝ գինը կհաշվենք։",
@@ -2413,6 +2436,7 @@
       lblAddCond: "Ավելացնել արտաքին բլոկի լվացում (+$149)",
       condNote: "Հասանելի է 1 կամ 2 ներքին բլոկի դեպքում։ 3 բլոկի դեպքում արտաքին բլոկի լվացումը՝ առանձին այցով։",
       ctSubmit: "Ուղարկել հարցումը",
+      bookTrust1: "✓ Առանց կանխավճարի", bookTrust2: "✓ Նախ հաստատում ենք գինը", bookTrust3: "✓ Զանգում ենք ժամը հաստատելու համար",
       ctNote: "Ուղարկելով դուք համաձայնում եք կապ հաստատել MasterDom HVAC-ի հետ։ Ձեր տվյալները չենք փոխանցում։",
       fastTitle: "Դեռ պատրա՞ստ չեք գրանցվել", fastDesc: "Ուղարկեք ներքին բլոկի լուսանկարը և նկարագրեք խնդիրը։ Կօգնենք ընտրել ճիշտ ծառայությունը։", fastBtn: "Ուղարկել լուսանկար", mobileCall: "Զանգահարել", mobileText: "Ուղարկել լուսանկար",
       infoPhoneL: "ԶԱՆԳ ԿԱՄ SMS", infoPhoneS: "English · Русский · Հայերեն",
@@ -2729,6 +2753,22 @@
     input.value = '';
     setTimeout(() => respondTo(text), 700);
   }
+
+  // === INTERACTIVE BEFORE / AFTER ===
+  (function initComparisonSlider() {
+    const slider = document.getElementById('comparisonSlider');
+    const range = document.getElementById('comparisonRange');
+    if (!slider || !range) return;
+
+    const syncSlider = () => {
+      slider.style.setProperty('--split', range.value + '%');
+      slider.style.setProperty('--comparison-width', slider.clientWidth + 'px');
+    };
+
+    range.addEventListener('input', syncSlider);
+    window.addEventListener('resize', syncSlider, { passive: true });
+    syncSlider();
+  })();
 
   // === INITIAL LANGUAGE (?lang=ru / ?lang=hy, matches hreflang links) ===
   (function initLang() {

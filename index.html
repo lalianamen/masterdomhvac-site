@@ -2770,6 +2770,14 @@
     syncSlider();
   })();
 
+  // Keep the primary conversion form close to the hero. Visitors who need
+  // more detail can continue into the process, pricing and FAQ sections.
+  (function positionBookingAfterTrust() {
+    const booking = document.getElementById('book');
+    const trustStrip = document.querySelector('.trust-strip');
+    if (booking && trustStrip) trustStrip.insertAdjacentElement('afterend', booking);
+  })();
+
   // === INITIAL LANGUAGE (?lang=ru / ?lang=hy, matches hreflang links) ===
   (function initLang() {
     const lang = new URLSearchParams(location.search).get('lang');

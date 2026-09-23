@@ -1568,6 +1568,7 @@
   .trust-item { background:#fff; border:1px solid rgba(16,42,67,.14); border-radius:16px; padding:18px; }
   .trust-item strong { display:block; font-family:'Plus Jakarta Sans',sans-serif; font-size:17px; margin-bottom:3px; }
   .trust-item span { font-size:12px; color:#587083; }
+  .hero-stats.detached-stats { width:min(1336px,calc(100% - 64px)); margin:8px auto 16px; padding:26px 0; justify-content:center; border-top:1px solid rgba(16,42,67,.15); border-bottom:1px solid rgba(16,42,67,.15); }
   .compare-section { padding-top:65px; }
   .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; max-width:980px; }
   .compare-card { background:#fff; border:1.5px solid #102A43; border-radius:22px; padding:30px; }
@@ -1585,6 +1586,7 @@
   @media (max-width:960px) {
     .hero-visual { min-height:470px; max-width:620px; width:100%; margin:0 auto; box-shadow:10px 10px 0 #168596; }
     .trust-strip { grid-template-columns:1fr 1fr; padding:0 18px; }
+    .hero-stats.detached-stats { width:calc(100% - 36px); }
   }
   @media (max-width:600px) {
     body { padding-bottom:72px; } .hero { padding-top:34px; }
@@ -2770,12 +2772,23 @@
     syncSlider();
   })();
 
-  // Keep the primary conversion form close to the hero. Visitors who need
-  // more detail can continue into the process, pricing and FAQ sections.
-  (function positionBookingAfterTrust() {
+  // Put the lead form directly after the hero. Supporting numbers and trust
+  // cards follow it instead of delaying the primary conversion action.
+  (function positionBookingFirst() {
     const booking = document.getElementById('book');
+    const hero = document.querySelector('.hero');
+    const heroStats = document.querySelector('.hero-stats');
     const trustStrip = document.querySelector('.trust-strip');
-    if (booking && trustStrip) trustStrip.insertAdjacentElement('afterend', booking);
+    if (!booking || !hero) return;
+
+    hero.insertAdjacentElement('afterend', booking);
+    if (heroStats) {
+      heroStats.classList.add('detached-stats');
+      booking.insertAdjacentElement('afterend', heroStats);
+    }
+    if (trustStrip) {
+      (heroStats || booking).insertAdjacentElement('afterend', trustStrip);
+    }
   })();
 
   // === INITIAL LANGUAGE (?lang=ru / ?lang=hy, matches hreflang links) ===

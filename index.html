@@ -1540,6 +1540,7 @@
   .visual-panel.after { background:#E6F4F3; }
   .visual-label { font-size:12px; letter-spacing:.12em; font-weight:900; }
   .before .visual-label { color:#9A4D2E; } .after .visual-label { color:#087383; }
+  .visual-photo { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:14px; border:1px solid rgba(16,42,67,.16); display:block; }
   .wheel { width:145px; height:145px; border-radius:50%; padding:14px; display:grid; place-items:center; border:8px solid #24475e; position:relative; }
   .wheel::before { content:''; width:34px; height:34px; border-radius:50%; background:#24475e; box-shadow:0 0 0 7px #fff; z-index:2; }
   .wheel::after { content:''; position:absolute; inset:15px; border-radius:50%; background:repeating-conic-gradient(from 2deg,#24475e 0 5deg,transparent 5deg 13deg); }
@@ -1685,12 +1686,12 @@
       <div class="visual-grid">
         <div class="visual-panel before">
           <div class="visual-label" data-i18n="beforeLabel">BEFORE</div>
-          <div class="wheel" aria-hidden="true"></div>
+          <img class="visual-photo" src="assets/mini-split-blower-wheel-before-cleaning-los-angeles.webp" width="900" height="684" alt="Dirty mini-split blower wheel before deep cleaning in Los Angeles" fetchpriority="high" decoding="async" />
           <div class="visual-copy" data-i18n="beforeCopy">Dust and buildup stay hidden inside the blower wheel.</div>
         </div>
         <div class="visual-panel after">
           <div class="visual-label" data-i18n="afterLabel">AFTER</div>
-          <div class="wheel" aria-hidden="true"></div>
+          <img class="visual-photo" src="assets/mini-split-blower-wheel-after-cleaning-los-angeles.webp" width="900" height="684" alt="Clean mini-split blower wheel after professional deep cleaning in Los Angeles" fetchpriority="high" decoding="async" />
           <div class="visual-copy" data-i18n="afterCopy">Wheel removed, washed and reinstalled—airflow restored.</div>
         </div>
       </div>

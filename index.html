@@ -2465,6 +2465,8 @@
   // === FORM ===
   // Single endpoint handles translation + Apps Script forwarding server-side
   const LEAD_ENDPOINT = '/api/lead';
+  const APPS_SCRIPT_LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwczTUZ7LJIcH19AInNt94oYYKbr2KlPUItC3nzIDaiNqfFOev_6nDlD-o3LiAfnDla2A/exec';
+  const IS_GITHUB_PAGES = location.hostname.endsWith('github.io');
 
   const SERVICE_LABELS = {
     '1': 'Mini-Split Cleaning — 1 unit ($349)',
@@ -2504,6 +2506,21 @@
     };
 
     try {
+      // GitHub Pages is static and cannot execute /api/lead. Send the same
+      // payload to the existing Apps Script destination instead.
+      if (IS_GITHUB_PAGES) {
+        await fetch(APPS_SCRIPT_LEAD_ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: 'payload=' + encodeURIComponent(JSON.stringify(leadData))
+        });
+        document.getElementById('modalOverlay').classList.add('open');
+        document.getElementById('bookingForm').reset();
+        updateCondenser();
+        return;
+      }
+
       const response = await fetch(LEAD_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -2685,6 +2702,12 @@
     const lang = new URLSearchParams(location.search).get('lang');
     if (lang && lang !== 'en') setLang(lang);
     updateCondenser();
+    // The AI endpoint is available on the server deployment, not on static
+    // GitHub Pages. Never show customers a chat button that cannot answer.
+    if (IS_GITHUB_PAGES) {
+      document.getElementById('chatFab').style.display = 'none';
+      document.getElementById('chatPanel').style.display = 'none';
+    }
   })();
 </script>
 

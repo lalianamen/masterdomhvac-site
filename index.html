@@ -1512,6 +1512,22 @@
   .next-steps ol { list-style:none; display:grid; grid-template-columns:repeat(4,1fr); gap:10px; counter-reset:steps; }
   .next-steps li { counter-increment:steps; color:#456176; font-size:11px; line-height:1.4; }
   .next-steps li::before { content:counter(steps); display:grid; place-items:center; width:24px; height:24px; margin-bottom:6px; border-radius:50%; background:#168596; color:#fff; font-weight:900; }
+  .company-section { padding-top:72px; padding-bottom:72px; }
+  .company-card { display:grid; grid-template-columns:300px 1fr; gap:48px; align-items:center; padding:44px; border-radius:28px; background:#102A43; color:#fff; box-shadow:12px 12px 0 #168596; }
+  .company-identity { min-height:260px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; border:1px solid rgba(255,255,255,.22); border-radius:22px; background:linear-gradient(145deg,rgba(255,255,255,.11),rgba(255,255,255,.03)); }
+  .company-monogram { display:grid; place-items:center; width:96px; height:96px; margin-bottom:18px; border-radius:50%; background:#E46A35; color:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:34px; font-weight:800; box-shadow:0 0 0 8px rgba(255,255,255,.1); }
+  .company-identity strong { font-family:'Plus Jakarta Sans',sans-serif; font-size:23px; }
+  .company-identity span { margin-top:5px; color:#bcd2dd; font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+  .company-copy .section-eyebrow { color:#FFAA7D; }
+  .company-copy .section-title { margin-bottom:20px; color:#fff; }
+  .company-copy p { max-width:720px; color:#d7e4e9; font-size:16px; line-height:1.7; }
+  .company-points { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:24px; }
+  .company-point { padding:13px 15px; border-radius:13px; background:rgba(255,255,255,.08); color:#fff; font-size:13px; font-weight:700; }
+  .company-point::before { content:'✓'; margin-right:8px; color:#65d2cc; font-weight:900; }
+  .final-cta { max-width:1336px; margin:30px auto 90px; padding:58px 38px; text-align:center; border-radius:28px; background:#E7F1F1; border:1.5px solid #102A43; }
+  .final-cta .section-title { margin-left:auto; margin-right:auto; }
+  .final-cta p { max-width:650px; margin:0 auto 26px; color:#456176; }
+  .final-cta-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
 
   .footer-disclosure { font-size: 12px; opacity: 0.55; line-height: 1.5; margin-top: 18px; max-width: 900px; }
 
@@ -1603,6 +1619,11 @@
     .trust-strip, .compare-grid { grid-template-columns:1fr; }
     .booking-reassurance { grid-template-columns:1fr; }
     .next-steps ol { grid-template-columns:1fr 1fr; }
+    .company-section { padding-top:48px; padding-bottom:48px; }
+    .company-card { grid-template-columns:1fr; gap:28px; padding:24px; }
+    .company-identity { min-height:210px; }
+    .company-points { grid-template-columns:1fr; }
+    .final-cta { margin:20px 18px 90px; padding:42px 20px; }
     .mobile-action-bar { position:fixed; display:grid; grid-template-columns:1fr 1fr; gap:8px; bottom:0; left:0; right:0; padding:10px 12px; background:rgba(255,255,255,.96); border-top:1px solid #ccd9df; z-index:9998; }
     .mobile-action-bar a { display:flex; justify-content:center; align-items:center; border-radius:999px; padding:12px 8px; font-weight:800; font-size:13px; }
     .mobile-call { background:#102A43; color:#fff; } .mobile-text { background:#E46A35; color:#fff; }
@@ -1734,6 +1755,28 @@
     <div class="trust-item"><strong data-i18n="trust3T">Clean-work standard</strong><span data-i18n="trust3D">Floors and walls protected</span></div>
     <div class="trust-item"><strong data-i18n="trust4T">3 languages</strong><span data-i18n="trust4D">English · Русский · Հայերեն</span></div>
   </div>
+
+  <!-- === COMPANY === -->
+  <section class="company-section" id="about">
+    <div class="company-card">
+      <div class="company-identity" aria-label="Armen, MasterDom HVAC technician">
+        <div class="company-monogram" aria-hidden="true">AL</div>
+        <strong>Armen</strong>
+        <span data-i18n="companyRole">HVAC technician · Glendale</span>
+      </div>
+      <div class="company-copy">
+        <div class="section-eyebrow" data-i18n="companyEyebrow">— Meet MasterDom HVAC</div>
+        <h2 class="section-title" data-i18n="companyTitle">A local specialist focused on <em>one job done thoroughly</em>.</h2>
+        <p data-i18n="companyDesc">MasterDom HVAC is based in Glendale and specializes in professional mini-split deep cleaning across Greater Los Angeles. Every visit is built around careful work inside your home, clear pricing and visible proof of the result.</p>
+        <div class="company-points">
+          <div class="company-point" data-i18n="companyPoint1">8+ years of hands-on HVAC experience</div>
+          <div class="company-point" data-i18n="companyPoint2">English, Russian and Armenian</div>
+          <div class="company-point" data-i18n="companyPoint3">Walls and floors protected during cleaning</div>
+          <div class="company-point" data-i18n="companyPoint4">Photos of your actual unit before and after</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- === SIGNS === -->
   <section id="signs">
@@ -2050,6 +2093,17 @@
       </div>
     </div>
   </section>
+
+  <section class="final-cta" aria-label="Request mini-split cleaning">
+    <div class="section-eyebrow" data-i18n="finalEyebrow">— Ready when you are</div>
+    <h2 class="section-title" data-i18n="finalTitle">Ready to see what is <em>inside your mini-split</em>?</h2>
+    <p data-i18n="finalDesc">Request your flat cleaning price with no payment required, or text us a photo if you are not sure your unit needs service.</p>
+    <div class="final-cta-actions">
+      <button class="btn-primary" onclick="goTo('book')"><span data-i18n="finalBook">Get My Cleaning Price</span> →</button>
+      <a class="btn-secondary" href="sms:+18189229475"><span>💬</span><span data-i18n="finalText">Text a Photo</span></a>
+      <a class="btn-secondary" href="tel:+18189229475"><span>📞</span><span>(818) 922-9475</span></a>
+    </div>
+  </section>
 </main>
 
 <!-- === FOOTER === -->
@@ -2067,7 +2121,6 @@
           <li><a href="#pricing" onclick="goTo('pricing', event)" data-i18n="p1Label">1 indoor unit</a> — $349</li>
           <li><a href="#pricing" onclick="goTo('pricing', event)" data-i18n="p2Label">2 indoor units</a> — $649</li>
           <li><a href="#pricing" onclick="goTo('pricing', event)" data-i18n="p3Label">3 indoor units</a> — $949</li>
-          <li><a href="#pricing" onclick="goTo('pricing', event)" data-i18n="p4Label">Outdoor condenser wash</a> — $149</li>
         </ul>
       </div>
 
@@ -2173,6 +2226,9 @@
       proof1: "Blower wheel removed", proof2: "No hidden fees", proof3: "Clean-work protection",
       visualHead: "This came out of a working mini-split", beforeLabel: "BEFORE", afterLabel: "AFTER", compareHelp: "↔ Drag to reveal the result", beforeCopy: "Dust and buildup stay hidden inside the blower wheel.", afterCopy: "Wheel removed, washed and reinstalled—airflow restored.", visualCaption: "Real blower wheel. Real before-and-after result. Every visit includes photos of your actual unit.",
       trust1T: "8+ years in HVAC", trust1D: "Hands-on field experience", trust2T: "Flat pricing", trust2D: "No trip fee or surprise upsells", trust3T: "Clean-work standard", trust3D: "Floors and walls protected", trust4T: "3 languages", trust4D: "English · Русский · Հայերեն",
+      companyRole: "HVAC technician · Glendale", companyEyebrow: "— Meet MasterDom HVAC", companyTitle: "A local specialist focused on <em>one job done thoroughly</em>.", companyDesc: "MasterDom HVAC is based in Glendale and specializes in professional mini-split deep cleaning across Greater Los Angeles. Every visit is built around careful work inside your home, clear pricing and visible proof of the result.",
+      companyPoint1: "8+ years of hands-on HVAC experience", companyPoint2: "English, Russian and Armenian", companyPoint3: "Walls and floors protected during cleaning", companyPoint4: "Photos of your actual unit before and after",
+      finalEyebrow: "— Ready when you are", finalTitle: "Ready to see what is <em>inside your mini-split</em>?", finalDesc: "Request your flat cleaning price with no payment required, or text us a photo if you are not sure your unit needs service.", finalBook: "Get My Cleaning Price", finalText: "Text a Photo",
       compareEyebrow: "— Know what you are paying for", compareTitle: "A quick rinse and a <em>deep clean</em> are not the same.", quickTitle: "Basic surface cleaning", quick1: "Filters rinsed", quick2: "Visible surfaces sprayed", quick3: "Blower wheel stays inside", quick4: "Hidden buildup may remain", deepTitle: "MasterDom deep cleaning", deep1: "Blower wheel removed and washed", deep2: "Coil, pan and drain cleaned", deep3: "Unit reassembled and tested", deep4: "Before-and-after photos included",
       statPrice: "Per indoor unit", statLangs: "Languages", statTime: "Per unit", statYears: "Years in HVAC",
       heroBadgeT: "All of Los Angeles", heroBadgeS: "Glendale · Valley · Pasadena · Westside",
@@ -2270,6 +2326,9 @@
       proof1: "Снимаем крыльчатку", proof2: "Без скрытых доплат", proof3: "Защищаем стены и пол",
       visualHead: "Это было внутри работающего мини-сплита", beforeLabel: "ДО", afterLabel: "ПОСЛЕ", compareHelp: "↔ Потяните, чтобы увидеть результат", beforeCopy: "Пыль и налёт прячутся внутри крыльчатки.", afterCopy: "Крыльчатка снята, вымыта и установлена обратно.", visualCaption: "Настоящая крыльчатка и реальный результат до и после. Вы получите фотографии именно вашего блока.",
       trust1T: "8+ лет в HVAC", trust1D: "Практический опыт на объектах", trust2T: "Фиксированная цена", trust2D: "Без платы за выезд и доплат", trust3T: "Чистая работа", trust3D: "Защищаем стены и пол", trust4T: "3 языка", trust4D: "English · Русский · Հայերեն",
+      companyRole: "HVAC-техник · Глендейл", companyEyebrow: "— Знакомьтесь: MasterDom HVAC", companyTitle: "Местный специалист, который <em>делает одну работу тщательно</em>.", companyDesc: "MasterDom HVAC находится в Глендейле и специализируется на профессиональной глубокой чистке мини-сплитов по Greater Los Angeles. Каждый визит — это аккуратная работа в вашем доме, понятная цена и наглядный результат.",
+      companyPoint1: "8+ лет практического опыта в HVAC", companyPoint2: "Английский, русский и армянский", companyPoint3: "Защищаем стены и пол во время чистки", companyPoint4: "Фотографии вашего блока до и после",
+      finalEyebrow: "— Когда будете готовы", finalTitle: "Хотите увидеть, что находится <em>внутри вашего мини-сплита</em>?", finalDesc: "Запросите фиксированную цену без предоплаты или отправьте фотографию, если не уверены, нужна ли блоку чистка.", finalBook: "Получить цену на чистку", finalText: "Отправить фото",
       compareEyebrow: "— Знайте, за что платите", compareTitle: "Быстрая промывка и <em>глубокая чистка</em> — не одно и то же.", quickTitle: "Поверхностная чистка", quick1: "Промывка фильтров", quick2: "Спрей по видимым поверхностям", quick3: "Крыльчатка остаётся внутри", quick4: "Скрытая грязь может остаться", deepTitle: "Глубокая чистка MasterDom", deep1: "Снимаем и моем крыльчатку", deep2: "Чистим радиатор, поддон и дренаж", deep3: "Собираем и проверяем блок", deep4: "Фото до и после включены",
       statPrice: "За внутренний блок", statLangs: "Языка", statTime: "На блок", statYears: "Лет в HVAC",
       heroBadgeT: "Весь Лос-Анджелес", heroBadgeS: "Глендейл · Долина · Пасадена · Вестсайд",
@@ -2367,6 +2426,9 @@
       proof1: "Անիվը հանվում է", proof2: "Առանց թաքնված վճարների", proof3: "Պաշտպանում ենք տունը",
       visualHead: "Սա աշխատող mini-split-ի ներսում էր", beforeLabel: "ԱՌԱՋ", afterLabel: "ՀԵՏՈ", compareHelp: "↔ Քաշեք՝ արդյունքը տեսնելու համար", beforeCopy: "Փոշին և կեղտը թաքնվում են օդափոխիչի անիվի ներսում։", afterCopy: "Անիվը հանված, լվացված և նորից տեղադրված է։", visualCaption: "Իրական անիվ և իրական առաջ ու հետո արդյունք։ Դուք կստանաք հենց ձեր բլոկի լուսանկարները։",
       trust1T: "8+ տարի HVAC-ում", trust1D: "Գործնական դաշտային փորձ", trust2T: "Ֆիքսված գին", trust2D: "Առանց այցի և անակնկալ վճարների", trust3T: "Մաքուր աշխատանք", trust3D: "Պաշտպանում ենք պատերն ու հատակը", trust4T: "3 լեզու", trust4D: "English · Русский · Հայերեն",
+      companyRole: "HVAC մասնագետ · Գլենդել", companyEyebrow: "— Ծանոթացեք MasterDom HVAC-ին", companyTitle: "Տեղական մասնագետ՝ կենտրոնացած <em>մեկ աշխատանքը մանրակրկիտ կատարելու վրա</em>։", companyDesc: "MasterDom HVAC-ը գտնվում է Գլենդելում և մասնագիտանում է Greater Los Angeles-ում mini-split-ների պրոֆեսիոնալ խորը մաքրման մեջ։ Յուրաքանչյուր այց հիմնված է ձեր տանը զգույշ աշխատանքի, պարզ գնի և տեսանելի արդյունքի վրա։",
+      companyPoint1: "8+ տարվա գործնական HVAC փորձ", companyPoint2: "Անգլերեն, ռուսերեն և հայերեն", companyPoint3: "Մաքրման ընթացքում պաշտպանում ենք պատերն ու հատակը", companyPoint4: "Ձեր բլոկի առաջ և հետո լուսանկարները",
+      finalEyebrow: "— Երբ պատրաստ լինեք", finalTitle: "Պատրա՞ստ եք տեսնել, թե ինչ կա <em>ձեր mini-split-ի ներսում</em>։", finalDesc: "Հարցրեք ֆիքսված մաքրման գինը առանց կանխավճարի կամ ուղարկեք լուսանկար, եթե վստահ չեք՝ արդյոք բլոկը մաքրման կարիք ունի։", finalBook: "Ստանալ մաքրման գինը", finalText: "Ուղարկել լուսանկար",
       compareEyebrow: "— Իմացեք՝ ինչի համար եք վճարում", compareTitle: "Արագ լվացումը և <em>խորը մաքրումը</em> նույնը չեն։", quickTitle: "Մակերեսային մաքրում", quick1: "Ֆիլտրերի լվացում", quick2: "Տեսանելի մասերի սփրեյ", quick3: "Անիվը մնում է ներսում", quick4: "Թաքնված կեղտը կարող է մնալ", deepTitle: "MasterDom-ի խորը մաքրում", deep1: "Անիվը հանվում և լվացվում է", deep2: "Մաքրվում են ռադիատորը, սկուտեղն ու դրենաժը", deep3: "Բլոկը հավաքվում և ստուգվում է", deep4: "Առաջ և հետո լուսանկարները ներառված են",
       statPrice: "Մեկ ներքին բլոկի համար", statLangs: "Լեզու", statTime: "Մեկ բլոկի համար", statYears: "Տարի HVAC-ում",
       heroBadgeT: "Ամբողջ Լոս Անջելեսը", heroBadgeS: "Գլենդել · Հովիտ · Պասադենա · Վեսթսայդ",
